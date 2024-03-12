@@ -1,0 +1,133 @@
+{% load static %}
+{% load tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        * {
+            margin: 0;
+            padding: 0;      
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+        }
+        @layer components {
+
+        .card {
+            @apply flex items-center justify-center flex-col gap-2 p-5 w-full sm:w-72 h-full bg-gray-100 border rounded-2xl
+        }
+
+        }
+
+
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/theme/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/static/theme/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/theme/assets/css/templatemo-cyborg-gaming.css">
+    <link rel="stylesheet" href="/static/theme/assets/css/owl.css">
+    <link rel="stylesheet" href="/static/theme/assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link href="/static/style.css" rel="stylesheet">
+
+    {% tailwind_css %}
+
+    <!-- Bootstrap core CSS -->
+
+
+
+</head>
+
+
+<body x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init=" darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+        :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
+    <!-- ===== Preloader Start ===== -->
+        <div x-show="loaded"x-init="window.addEventListener('DOMContentLoaded', () => {setTimeout(() => loaded = false, 500)})"class="fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-white z-999999 dark:bg-black">
+            <div class="w-16 h-16 border-4 border-solid rounded-full animate-spin border-primary border-t-transparent">
+            </div>
+        </div>
+    <!-- ===== Preloader End ===== -->
+
+    
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+        {% include 'home/sidebar.html' %}
+        <!-- ===== Content Area Start ===== -->
+        <div class="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto dark:bg-black">
+            {% include 'home/header.html' %}
+        <!-- ===== Main Content Start ===== -->
+            {% block content %}{% endblock content %}
+        <!-- ===== Main Content End ===== -->
+        </div>
+        <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+
+    <script type="text/javascript">
+        const slider = document.querySelector('.slider');
+
+        function activateNext() {
+            const items = document.querySelectorAll('.item-slider');
+            slider.append(items[0]);
+        }
+
+        function activatePrev() {
+            const items = document.querySelectorAll('.item-slider');
+            slider.prepend(items[items.length-1]);
+        }
+
+        function activateNextAutomatically() {
+            activateNext();
+        }
+
+        // Tự động chuyển đổi sau mỗi 3 giây
+        const intervalId = setInterval(activateNextAutomatically, 3000);
+
+        // Dừng chuyển đổi tự động khi người dùng click
+        function stopAutoSlide() {
+            clearInterval(intervalId);
+        }
+
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('.next')) {
+                activateNext();
+            } else if (e.target.matches('.prev')) {
+                activatePrev();
+            }
+        }, false);
+
+    </script>
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/theme/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/static/theme/assets/js/isotope.min.js"></script>
+    <script src="/static/theme/assets/js/owl-carousel.js"></script>
+    <script src="/static/theme/assets/js/tabs.js"></script>
+    <script src="/static/theme/assets/js/popup.js"></script>
+    <script src="/static/theme/assets/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="/static/theme/assets/js/bundle.js"></script>
+</body>
+
+</html>

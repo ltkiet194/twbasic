@@ -1,0 +1,355 @@
+{% load static %}
+{% load tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        * {
+            margin: 0;
+            padding: 0;      
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+        }
+        @layer components {
+
+        .card {
+            @apply flex items-center justify-center flex-col gap-2 p-5 w-full sm:w-72 h-full bg-gray-100 border rounded-2xl
+        }
+
+        }
+
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/theme/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/static/theme/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/theme/assets/css/templatemo-cyborg-gaming.css">
+    <link rel="stylesheet" href="/static/theme/assets/css/owl.css">
+    <link rel="stylesheet" href="/static/theme/assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    {% tailwind_css %}
+
+    <style>
+        .item-slider {
+            width: 200px;
+            height: 250px;
+            list-style-type: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            background-position: center;
+            background-size: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 30px rgba(255,255,255,0.3) inset;
+            transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
+        
+            &:nth-child(1), &:nth-child(2) {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: none;
+            border-radius: 0;
+            box-shadow: none;
+            opacity: 1;
+            }
+        
+            &:nth-child(3) { left: 80%; }
+            &:nth-child(4) { left: calc(75% + 170px); }
+            &:nth-child(5) { left: calc(75% + 170px); }
+            &:nth-child(6) { left: calc(75% + 340px); opacity: 0; }
+        }
+        
+        .content {
+            width: min(30vw,400px);
+            position: absolute;
+            top: 50%;
+            left: 3rem;
+            transform: translateY(-50%);
+            font: 400 0.85rem helvetica,sans-serif;
+            color: white;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+            opacity: 0;
+            display: none;
+        
+            & .title {
+            font-family: 'arial-black';
+            text-transform: uppercase;
+            }
+        
+            & .description {
+            line-height: 1.7;
+            margin: 1rem 0 1.5rem;
+            font-size: 0.8rem;
+            }
+        
+            & button {
+            width: fit-content;
+            background-color: rgba(0,0,0,0.1);
+            color: white;
+            border: 2px solid white;
+            border-radius: 0.25rem;
+            padding: 0.75rem;
+            cursor: pointer;
+            }
+        }
+        
+        .item-slider:nth-of-type(2) .content {
+            display: block;
+            animation: show 0.75s ease-in-out 0.3s forwards;
+        }
+        
+        @keyframes show {
+            0% {
+            filter: blur(5px);
+            transform: translateY(calc(-50% + 75px));
+            }
+            100% {
+            opacity: 1;
+            filter: blur(0);
+            }
+        }
+        
+        .nav-slider {
+            position: absolute;
+            bottom: 2rem;
+            left: 70%;
+            transform: translateX(-50%);
+            z-index: 5;
+            user-select: none;
+        
+            & .btn {
+            background-color: rgba(255,255,255,0.5);
+            color: rgba(0,0,0,0.7);
+            border: 2px solid rgba(0,0,0,0.6);
+            margin: 0 0.25rem;
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+        
+            &:hover {
+                background-color: rgba(255,255,255,0.3);
+            }
+            }
+        }
+        
+        @media (width > 650px) and (width < 900px) {
+            .content {
+            & .title        { font-size: 1rem; }
+            & .description  { font-size: 0.7rem; }
+            & button        { font-size: 0.7rem; }
+            }
+            .item-slider {
+            width: 160px;
+            height: 200px;
+        
+            &:nth-child(3) { left: 80%; }
+            &:nth-child(4) { left: calc(70% + 160px); }
+            &:nth-child(5) { left: calc(70% + 170px); }
+            &:nth-child(6) { left: calc(70% + 510px); opacity: 0; }
+            }
+        }
+        
+        @media (width < 650px) {
+            .content {
+            & .title        { font-size: 0.9rem; }
+            & .description  { font-size: 0.65rem; }
+            & button        { font-size: 0.7rem; }
+            }
+            .item-slider {
+            width: 130px;
+            height: 220px;
+        
+            &:nth-child(3) { left: 80%; }
+            &:nth-child(4) { left: calc(70% + 140px); }
+            &:nth-child(5) { left: calc(70% + 280px); }
+            &:nth-child(6) { left: calc(70% + 420px); opacity: 0; }
+            }
+        }
+    </style>
+
+</head>
+<body >   
+    
+    
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
+        </div>
+    </div>     
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="/static/theme/assets/images/logo.png" alt="">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Search End ***** -->
+                        <!-- ***** Search End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav *:font-poppins">
+                            <li class="p-3">
+                                <a href="index.html" class="active hover:text-white">Home</a>
+                            </li>
+                            <li class="p-3"><a href="browse.html">Browse</a></li>
+                            <li class="p-3"><a href="details.html">Details</a></li>
+                            <li class="p-3"><a href="streams.html">Streams</a></li>
+                            <li class="pt-1"> 
+                                <div class="flex justify-center m-1 rounded-xl">                              
+                                    <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" 
+                                    class="relative max-w-fit" type="button">
+                                        <img class="w-10 h-10 rounded-full" src="/static/theme/assets/images/profile-header.jpg" alt="">           
+                                        <span class="absolute top-0 right-0 w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                                        </button>                                     
+                                        <!-- Dropdown menu -->
+                                        <div id="dropdownHover" class="z-10 hidden max-w-sm divide-y shadow" style="translate3d(100px, 58px, 0px)">
+                                            <div class="col-span-4 sm:col-span-3">
+                                                <div class="p-6 bg-gray-700 rounded-lg shadow-2xl">
+                                                    <div class="flex flex-row m-2 text-white bg-gray-300 rounded-lg shadow-2xl">                                
+                                                        <div class="p-1 basis-1/4">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-8 h-8 ">
+                                                                <path 
+                                                                strokeLinecap="round" 
+                                                                strokeLinejoin="round" 
+                                                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                                            </svg>
+                                                        </div>
+                                                        <a href="#" class="p-1 text-xl text-white align-middle basis-3/4">Profile</a>
+                                                    </div>
+                                                    <div class="flex flex-row m-2 bg-gray-300 rounded-lg shadow-2xl">
+                                    
+                                                        <div class="p-1 basis-1/4">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-8 h-8">
+                                                                <path 
+                                                                strokeLinecap="round" 
+                                                                strokeLinejoin="round" 
+                                                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                                            </svg>
+                                                        </div>
+                                                        <a href="#" class="p-1 text-xl align-middle basis-3/4">Profile </a>
+                                                    </div>
+                                                    <div class="flex flex-row m-2 bg-gray-300 rounded-lg shadow-2xl">
+                                    
+                                                        <div class="p-1 basis-1/4">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-8 h-8">
+                                                                <path 
+                                                                strokeLinecap="round" 
+                                                                strokeLinejoin="round" 
+                                                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                                            </svg>
+                                                        </div>
+                                                        <a href="#" class="p-1 text-xl align-middle basis-3/4">Profile </a>
+                                                    </div>
+                                                    <hr class="h-1 my-2 border-t-2 border-gray-600">
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>                                                       
+                            </li>
+                        </ul>   
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="root">
+        <!-- ***** Preloader Start ***** -->
+        <div>
+            {% block content %}{% endblock content %}
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved. 
+                
+                <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+            </div>
+            </div>
+        </div>
+    </footer>
+        
+        
+    
+        
+        
+<script type="text/javascript">
+    const slider = document.querySelector('.slider');
+
+    function activateNext() {
+        const items = document.querySelectorAll('.item-slider');
+        slider.append(items[0]);
+    }
+    
+    function activatePrev() {
+        const items = document.querySelectorAll('.item-slider');
+        slider.prepend(items[items.length-1]);
+    }
+    
+    function activateNextAutomatically() {
+        activateNext();
+    }
+    
+    // Tự động chuyển đổi sau mỗi 3 giây
+    const intervalId = setInterval(activateNextAutomatically, 3000);
+    
+    // Dừng chuyển đổi tự động khi người dùng click
+    function stopAutoSlide() {
+        clearInterval(intervalId);
+    }
+    
+    document.addEventListener('click', function(e) {
+        if (e.target.matches('.next')) {
+            activateNext();
+        } else if (e.target.matches('.prev')) {
+            activatePrev();
+        }
+    }, false);
+    
+</script>
+    <!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+<script src="/static/theme/vendor/jquery/jquery.min.js"></script>
+<script src="/static/theme/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="/static/theme/assets/js/isotope.min.js"></script>
+<script src="/static/theme/assets/js/owl-carousel.js"></script>
+<script src="/static/theme/assets/js/tabs.js"></script>
+<script src="/static/theme/assets/js/popup.js"></script>
+<script src="/static/theme/assets/js/custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

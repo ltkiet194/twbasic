@@ -1,0 +1,47 @@
+<!-- ===== Header Start ===== -->
+<header class="sticky top-0 flex w-full bg-slate-200 dark:bg-black z-999 ">
+    <div class="flex items-center justify-between flex-grow px-4 py-4 shadow-2 md:px-6 2xl:px-11 dark:bg-[#1e1e1e]">
+        <div class="flex items-center gap-2 sm:gap-4">
+        <!-- Hamburger Toggle BTN -->
+            <button class="z-99999 block rounded-sm  dark:bg-[#2563eb] p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark"@click.stop="sidebarToggle = !sidebarToggle">
+                <span class="relative block h-5.5 w-5.5 cursor-pointer">
+                    <span class="absolute right-0 w-full h-full du-block">
+                    <span
+                        class="relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-[0] duration-200 ease-in-out dark:bg-white"
+                        :class="{ '!w-full delay-300': !sidebarToggle }"
+                    ></span>
+                    <span
+                        class="relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-150 duration-200 ease-in-out dark:bg-white"
+                        :class="{ '!w-full delay-400': !sidebarToggle }"
+                    ></span>
+                    <span
+                        class="relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-200 duration-200 ease-in-out dark:bg-white"
+                        :class="{ '!w-full delay-500': !sidebarToggle }"
+                    ></span>
+                    </span>
+                    <span class="absolute right-0 w-full h-full rotate-45 du-block">
+                    <span
+                        class="absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black delay-300 duration-200 ease-in-out dark:bg-white"
+                        :class="{ '!h-0 delay-[0]': !sidebarToggle }"
+                    ></span>
+                    <span
+                        class="delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black duration-200 ease-in-out dark:bg-white"
+                        :class="{ '!h-0 dealy-200': !sidebarToggle }"
+                    ></span>
+                    </span>
+                </span>
+            </button>
+        <!-- Hamburger Toggle BTN -->
+            <a class="flex-shrink-0 block" href="index.html">
+                <img src="/static/src/images/logo/logo-icon.svg" alt="Logo" />
+            </a>
+        </div>
+        <!-- your_template.html -->
+        <div class="hidden sm:block">
+            {% include 'home/search.html' %}
+        </div>
+        {% include 'home/user_header.html' %}
+
+    </div>
+</header>
+<!-- ===== Header End ===== -->
