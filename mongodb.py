@@ -40,7 +40,7 @@ class GameStoreDatabase:
         return result.deleted_count
 
 # Example usage:
-url = 'mongodb://localhost:27017'
+url = 'mongodb+srv://ltkiet194:vuluong1234@cluster0.rdfhggv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 db_name = 'GameStore'
 game_db = GameStoreDatabase(url, db_name)
 
