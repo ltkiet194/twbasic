@@ -45,3 +45,4 @@ db_name = 'GameStore'
 game_db = GameStoreDatabase(url, db_name)
 
 
+a=""
