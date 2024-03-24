@@ -294,7 +294,6 @@ def api_add_game_to_cart(request,id):
             "status":1
         }
         return JsonResponse(data, safe=False)
-
     end_time = time.time()
     delay = end_time - start_time
     print("Delay time:", delay, "seconds")
