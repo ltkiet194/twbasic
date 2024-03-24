@@ -1,0 +1,37 @@
+{% load filter %}
+<div class="mt-5 text-2xl ">
+    Tags:
+    {% for item in game.attribute %}
+        {% if item.k == "tag" %}
+            <a href="{% url 'game_by_attributes' item.k item.v %}" class="justify-center mx-1 mt-1 text-xl font-bold hover:underline text-rose-600 hover:text-red-400">{{ item.u }}</a>
+        {% endif %}
+    {% endfor %}
+</div>
+<div class="mt-5 text-2xl ">
+    Category:
+    {% for item in game.attribute %}
+        {% if item.k == "category" %}
+            <a href="{% url 'game_by_attributes' item.k item.v %}" class="justify-center mx-1 mt-1 text-xl font-bold hover:underline text-rose-600 hover:text-red-400">{{ item.u }}</a>
+        {% endif %}
+    {% endfor %}
+</div>
+<div class="mt-5 text-2xl ">
+    Studio:
+    {% for item in game.attribute %}
+        {% if item.k == "developer" %}
+            <a href="{% url 'game_by_attributes' item.k item.v %}" class="justify-center mx-1 mt-1 text-xl font-bold hover:underline text-rose-600 hover:text-red-400">{{ item.u }}</a>
+        {% endif %}
+    {% endfor %}
+</div>
+<div class="mt-5 text-2xl ">
+    Publisher:
+    {% for item in game.attribute %}
+        {% if item.k == "publisher" %}
+            <a href="{% url 'game_by_attributes' item.k item.v %}" class="justify-center mx-1 mt-1 text-xl font-bold hover:underline text-rose-600 hover:text-red-400">{{ item.u }}</a>
+        {% endif %}
+    {% endfor %}
+</div>
+<div class="mt-5 text-2xl">
+    Year Release:
+    <a href="{% url 'game_by_attributes' 'yearRelease' 'game.yearRelease' %}" class="justify-center mx-1 mt-1 text-xl font-bold hover:underline text-rose-600 hover:text-red-400">{{ game.yearRelease }}</a>
+</div>

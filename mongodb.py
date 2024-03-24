@@ -5,6 +5,11 @@ class GameStoreDatabase:
         self.client = MongoClient(url)
         self.db = self.client[db_name]
         self.col_game = self.db['GameData']
+        self.col_users = self.db['Users']
+        self.col_game_review = self.db['GameReview']
+        self.col_game_comment = self.db['GameComment']
+        self.col_static = self.db['Static']
+        
 
     def insert_data(self, collection_name, data):
         collection = self.db[collection_name]

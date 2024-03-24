@@ -1,0 +1,93 @@
+
+
+{% if user_session != null %}
+
+    <div class="flex items-center gap-10 py-6"><span class="text-base">0 Comments</span><span class="text-sm">Sort by recent</span></div>
+    <div id="mainComment">
+        <div id="commentBox" class="">
+            <div class="flex w-full gap-4 pl-5 mb-8"><img class="w-10 h-10 rounded-full" src="/static/avatar/{{user_session.Avatar}}" alt="user-profile">
+                <textarea id="inputReplyComment" onkeydown="handleKeyPressMain(this,event,'-1','{{id}}')" class="w-full py-1 border-b border-gray-300 rounded-lg outline-none focus:border-black self-baseline placeholder:text-gray-600" rows="3" placeholder="Add a comment..."></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="mx-0" id="containerComment">
+        <div class="my-2 max-w-[97vw]">
+            <div class="flex px-5 py-3 bg-gray-100 rounded-lg "><img class="w-10 h-10 rounded-full" src="https://yt3.ggpht.com/scuP5dUuUq0e7IY6pj-Dkt43obsTPxBtpNG1nEoZdw3SmpZGAmgi2v1zf3zThQRzs6CP93Av=s48-c-k-c0x00ffffff-no-rj" alt="profile-img">
+                <ul class="w-full px-4">
+                    <li class="flex items-baseline gap-2"><span id="spanIdUser" class="text-sm font-bold ">@ishitamallick382</span><span class="py-1 text-xs text-gray-600">2 hours ago</span></li>
+                    <li class="py-1 text-sm break-all">At the end He gives the message "If you don't love yourself then you can't love another person" - Taehyung is so thoughtful :(((</li>
+                    <li class="flex items-center gap-1 py-1 text-xs text-gray-600"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="text-xl text-black" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7 0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4 47.6-20.3 78.3-66.8 78.3-118.4 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7-.2-12.6-2-25.1-5.6-37.1zM184 852V568h81v284h-81zm636.4-353l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7 9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43z"></path>
+                    </svg>461<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="ml-1 text-xl text-black " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M885.9 490.3c3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-51.6-30.7-98.1-78.3-118.4a66.1 66.1 0 0 0-26.5-5.4H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h129.3l85.8 310.8C372.9 889 418.9 924 470.9 924c29.7 0 57.4-11.8 77.9-33.4 20.5-21.5 31-49.7 29.5-79.4l-6-122.9h239.9c12.1 0 23.9-3.2 34.3-9.3 40.4-23.5 65.5-66.1 65.5-111 0-28.3-9.3-55.5-26.1-77.7zM184 456V172h81v284h-81zm627.2 160.4H496.8l9.6 198.4c.6 11.9-4.7 23.1-14.6 30.5-6.1 4.5-13.6 6.8-21.1 6.7a44.28 44.28 0 0 1-42.2-32.3L329 459.2V172h415.4a56.85 56.85 0 0 1 33.6 51.8c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-14 25.5 21.9 19a56.76 56.76 0 0 1 19.6 43c0 19.1-11 37.5-28.8 48.4z"></path>
+                    </svg>
+                    <button id="replybtn" onclick="handlePressReply(this)" class="pl-4 text-xs font-bold text-black replybtn">Reply
+                    </button>
+                    </li>
+                    <li id="licommentBox"class="hidden comment">
+                        <div id="commentBox">
+                            <div class="flex w-full gap-4 my-4"><img class="w-10 h-10 rounded-full" src="/static/avatar/{{user_session.Avatar}}" alt="user-profile">
+                                <textarea id="inputReplyComment" onkeydown="handleKeyPress(this,event,'afa','{{id}}',0)" class="w-full py-1 border-b border-gray-300 rounded-lg outline-none focus:border-black self-baseline placeholder:text-gray-600" rows="3" placeholder="Add a comment..."></textarea>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="pl-14">
+                <div class="my-2 max-w-[85vw]">
+                    <div class="flex px-5 py-3 bg-gray-100 rounded-lg "><img class="w-10 h-10 rounded-full" src="/static/avatar/{{user_session.Avatar}}" alt="profile-img">
+                        <ul class="w-full px-4">
+                            <li class="flex items-baseline gap-2"><span class="text-sm font-bold">@Whitemilkenator</span><span class="py-1 text-xs text-gray-600">12 minutes ago</span></li>
+                            <li class="py-1 text-sm break-all">Is it so?</li>
+                            <li class="flex items-center gap-1 py-1 text-xs text-gray-600"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="text-xl text-black" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7 0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4 47.6-20.3 78.3-66.8 78.3-118.4 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7-.2-12.6-2-25.1-5.6-37.1zM184 852V568h81v284h-81zm636.4-353l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7 9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43z"></path>
+                                </svg>0<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="ml-1 text-xl text-black " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M885.9 490.3c3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-51.6-30.7-98.1-78.3-118.4a66.1 66.1 0 0 0-26.5-5.4H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h129.3l85.8 310.8C372.9 889 418.9 924 470.9 924c29.7 0 57.4-11.8 77.9-33.4 20.5-21.5 31-49.7 29.5-79.4l-6-122.9h239.9c12.1 0 23.9-3.2 34.3-9.3 40.4-23.5 65.5-66.1 65.5-111 0-28.3-9.3-55.5-26.1-77.7zM184 456V172h81v284h-81zm627.2 160.4H496.8l9.6 198.4c.6 11.9-4.7 23.1-14.6 30.5-6.1 4.5-13.6 6.8-21.1 6.7a44.28 44.28 0 0 1-42.2-32.3L329 459.2V172h415.4a56.85 56.85 0 0 1 33.6 51.8c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-14 25.5 21.9 19a56.76 56.76 0 0 1 19.6 43c0 19.1-11 37.5-28.8 48.4z"></path>
+                                </svg>
+                                <span class="pl-4 text-xs font-bold text-black replybtn">
+                                    Reply
+                                </span>
+                            </li>
+                            <li class="hidden comment">
+                                <div id="commentBox relative">
+                                    <div class="relative flex w-full gap-4 my-4"><img class="w-10 h-10 rounded-full" src="https://yt3.ggpht.com/a/default-user=s88-c-k-c0x00ffffff-no-rj" alt="user-profile">
+                                    <input type="text" class="w-full py-1 border-b border-gray-300 rounded-lg outline-none focus:border-black self-baseline placeholder:text-gray-600" placeholder="Add a comment...">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="my-2 max-w-[85vw]">
+                    <div class="flex px-5 py-3 bg-gray-100 rounded-lg "><img class="w-10 h-10 rounded-full" src="https://yt3.ggpht.com/scuP5dUuUq0e7IY6pj-Dkt43obsTPxBtpNG1nEoZdw3SmpZGAmgi2v1zf3zThQRzs6CP93Av=s48-c-k-c0x00ffffff-no-rj" alt="profile-img">
+                        <ul class="w-full px-4">
+                            <li class="flex items-baseline gap-2"><span class="text-sm font-bold">@Whitemilkenator</span><span class="py-1 text-xs text-gray-600">12 minutes ago</span></li>
+                            <li class="py-1 text-sm break-all">Is it so?</li>
+                            <li class="flex items-center gap-1 py-1 text-xs text-gray-600"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="text-xl text-black" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7 0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4 47.6-20.3 78.3-66.8 78.3-118.4 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7-.2-12.6-2-25.1-5.6-37.1zM184 852V568h81v284h-81zm636.4-353l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7 9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43z"></path>
+                                </svg>0<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="ml-1 text-xl text-black " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M885.9 490.3c3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-51.6-30.7-98.1-78.3-118.4a66.1 66.1 0 0 0-26.5-5.4H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h129.3l85.8 310.8C372.9 889 418.9 924 470.9 924c29.7 0 57.4-11.8 77.9-33.4 20.5-21.5 31-49.7 29.5-79.4l-6-122.9h239.9c12.1 0 23.9-3.2 34.3-9.3 40.4-23.5 65.5-66.1 65.5-111 0-28.3-9.3-55.5-26.1-77.7zM184 456V172h81v284h-81zm627.2 160.4H496.8l9.6 198.4c.6 11.9-4.7 23.1-14.6 30.5-6.1 4.5-13.6 6.8-21.1 6.7a44.28 44.28 0 0 1-42.2-32.3L329 459.2V172h415.4a56.85 56.85 0 0 1 33.6 51.8c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-14 25.5 21.9 19a56.76 56.76 0 0 1 19.6 43c0 19.1-11 37.5-28.8 48.4z"></path>
+                                </svg>
+                                <span class="pl-4 text-xs font-bold text-black replybtn">
+                                    Reply
+                                </span>
+                            </li>
+                            <li class="hidden comment">
+                                <div id="commentBox relative">
+                                    <div class="relative flex w-full gap-4 my-4"><img class="w-10 h-10 rounded-full" src="https://yt3.ggpht.com/a/default-user=s88-c-k-c0x00ffffff-no-rj" alt="user-profile">
+                                        <input type="text" value=""class="w-full py-1 border-b border-gray-300 rounded-lg outline-none focus:border-black self-baseline placeholder:text-gray-600" placeholder="Add a comment...">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="p-6 bg-white rounded-lg shadow-xl">
+        <h2 class="mb-2 text-2xl text-gray-600 font-poppins"><a href="{% url 'login'%}">Login</a> to view this section</h2>
+    </div>
+{% endif %}
+    

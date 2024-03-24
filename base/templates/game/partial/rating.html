@@ -1,0 +1,179 @@
+{% load static %}
+
+<style>
+/*reset css*/
+/****** Style Star Rating Widget *****/
+#rating{border:none;float:left;}
+#rating>input{display:none;}/*ẩn input radio - vì chúng ta đã có label là GUI*/
+#rating>label:before{margin:5px;font-size:1.25em;font-family:FontAwesome;display:inline-block;content:"\f005";}/*1 ngôi sao*/
+#rating>.half:before{content:"\f089";position:absolute;}/*0.5 ngôi sao*/
+#rating>label{color:#ddd;float:right;}/*float:right để lật ngược các ngôi sao lại đúng theo thứ tự trong thực tế*/
+/*thêm màu cho sao đã chọn và các ngôi sao phía trước*/
+#rating>input:checked~label,
+#rating:not(:checked)>label:hover, 
+#rating:not(:checked)>label:hover~label{color:#FFD700;}
+/* Hover vào các sao phía trước ngôi sao đã chọn*/
+#rating>input:checked+label:hover,
+#rating>input:checked~label:hover,
+#rating>label:hover~input:checked~label,
+#rating>input:checked~label:hover~label{color:#FFED85;}
+</style>
+
+{% if user_session != null %}
+
+<div class="flex row ">
+  <div class="w-full ">
+    <div class="w-full mx-auto lg-6">
+      <div class="w-full">
+        <form class="bg-white border rounded-lg ">
+          {% csrf_token %}
+            <div class="pt-2 pb-2 border-b border-gray-100 max-xl:max-w-2xl max-xl:mx-auto">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="flex items-center gap-3">
+                      <img src="{% static 'avatar/' %}{{user_session.Avatar}}" alt="John image" class="w-8 h-8">
+                      <h6 class="text-lg font-semibold leading-8 text-indigo-500">@{{user_session.Username}}</h6>
+                    </div>
+                    <div id="rating">
+                        <input type="radio" id="star5" name="rating" value="5" />
+                        <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                        <input type="radio" id="star4" name="rating" value="4" />
+                        <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                        <input type="radio" id="star3" name="rating" value="3" />
+                        <label class = "full" for="star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="star2" name="rating" value="2" />
+                        <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                        <input type="radio" id="star1" name="rating" value="1" />
+                        <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                    </div>
+                </div>
+              
+                <div class="px-3 mt-2 mb-2">
+                    <textarea placeholder="Your review" id="textReview" 
+                    class="w-full h-20 px-3 py-2 font-medium leading-normal text-black placeholder-gray-500 bg-gray-100 border border-gray-400 rounded resize-none focus:outline-none focus:bg-white"></textarea>
+                </div>
+                <div class="flex justify-end px-4">
+                    <input id="btnRating" type="button" class="px-2.5 py-1.5 rounded-md text-white text-sm bg-indigo-500" value="Comment">
+                </div>
+              </div>
+        </form>
+        <h2 class="mb-8 text-4xl font-bold text-center text-black font-manrope dark:text-white">Our customer reviews
+        </h2>
+        <div class="grid grid-cols-1 border-b border-gray-100 xl:grid-cols-2 gap-11 pb-11 max-xl:max-w-2xl max-xl:mx-auto">
+          <div class="flex flex-col w-full box gap-y-4 ">
+            <div class="flex items-center w-full">
+              <p class="font-medium text-lg text-black mr-0.5 dark:text-white">5</p>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_12042_8589)">
+                  <path d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z" fill="#FBBF24" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_12042_8589">
+                    <rect width="20" height="20" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <p class="h-2 w-full sm:min-w-[278px] rounded-3xl bg-amber-50 ml-5 mr-3">
+                <span id="span5Star" class="h-full w-[0%] rounded-3xl bg-amber-400 flex"></span>
+              </p>
+              <p id="p5Star" class="font-medium text-lg  text-black mr-0.5  dark:text-white">0</p>
+            </div>
+            <div class="flex items-center w-full">
+              <p class="font-medium text-lg text-black mr-0.5  dark:text-white">4</p>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_12042_8589)">
+                  <path d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z" fill="#FBBF24" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_12042_8589">
+                    <rect width="20" height="20" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <p class="h-2 w-full xl:min-w-[278px] rounded-3xl bg-amber-50 ml-5 mr-3">
+                <span id="span4Star" class="h-full w-[0%] rounded-3xl bg-amber-400 flex"></span>
+              </p>
+              <p id="p4Star" class="font-medium text-lg text-black mr-0.5  dark:text-white">0</p>
+            </div>
+            <div class="flex items-center w-full">
+              <p class="font-medium text-lg text-black mr-0.5  dark:text-white">3</p>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_12042_8589)">
+                  <path d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z" fill="#FBBF24" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_12042_8589">
+                    <rect width="20" height="20" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <p class="h-2 w-full xl:min-w-[278px] rounded-3xl bg-amber-50 ml-5 mr-3">
+                <span id="span3Star" class="h-full w-[0%] rounded-3xl bg-amber-400 flex"></span>
+              </p>
+              <p id="p3Star" class="font-medium text-lg text-black mr-0.5 dark:text-white">0</p>
+            </div>
+            <div class="flex items-center w-full">
+              <p class="font-medium text-lg text-black mr-0.5  dark:text-white">2</p>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_12042_8589)">
+                  <path d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z" fill="#FBBF24" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_12042_8589">
+                    <rect width="20" height="20" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <p class="h-2 w-full xl:min-w-[278px] rounded-3xl bg-amber-50 ml-5 mr-3">
+                <span id="span2Star" class="h-full w-[0%] rounded-3xl bg-amber-400 flex"></span>
+              </p>
+              <p id="p2Star" class="font-medium text-lg text-black mr-0.5  dark:text-white">0</p>
+            </div>
+            <div class="flex items-center w-full">
+              <p class="font-medium text-lg text-black mr-0.5  dark:text-white">1</p>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_12042_8589)">
+                  <path d="M9.10326 2.31699C9.47008 1.57374 10.5299 1.57374 10.8967 2.31699L12.7063 5.98347C12.8519 6.27862 13.1335 6.48319 13.4592 6.53051L17.5054 7.11846C18.3256 7.23765 18.6531 8.24562 18.0596 8.82416L15.1318 11.6781C14.8961 11.9079 14.7885 12.2389 14.8442 12.5632L15.5353 16.5931C15.6754 17.41 14.818 18.033 14.0844 17.6473L10.4653 15.7446C10.174 15.5915 9.82598 15.5915 9.53466 15.7446L5.91562 17.6473C5.18199 18.033 4.32456 17.41 4.46467 16.5931L5.15585 12.5632C5.21148 12.2389 5.10393 11.9079 4.86825 11.6781L1.94038 8.82416C1.34687 8.24562 1.67438 7.23765 2.4946 7.11846L6.54081 6.53051C6.86652 6.48319 7.14808 6.27862 7.29374 5.98347L9.10326 2.31699Z" fill="#FBBF24" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_12042_8589">
+                    <rect width="20" height="20" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <p class="h-2 w-full xl:min-w-[278px] rounded-3xl bg-amber-50 ml-5 mr-3">
+                <span id="span1Star" class="h-full w-[0%] rounded-3xl bg-amber-400 flex"></span>
+              </p>
+              <p id="p1Star" class="font-medium text-lg py-[1px] text-black mr-0.5 dark:text-white">0</p>
+            </div>
+          </div>
+          <div class="flex flex-col items-center justify-center p-8 bg-amber-50 rounded-3xl">
+            <h2 id="h2AvgRating"class="mb-6 text-5xl font-bold font-manrope text-amber-400">
+              Chưa có đánh giá</h2>
+            <div class="flex items-center justify-center gap-2 mb-4 sm:gap-6">
+              <div id="percentRating" class="text-5xl star-ratings">
+                <div class="text-yellow-400 fill-ratings" style="width: {{review.RatingAvg}}%;">
+                  <span class="inline-block">★★★★★</span>
+                </div>
+                <div class="empty-ratings">
+                  <span class="inline-block">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <p id="pTotalRating"class="text-xl font-medium leading-8 text-center text-gray-900">{{review.Total}}</p>
+          </div>
+        </div>
+        <div id="containerReview">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+{% else %}
+<div class="p-6 bg-white rounded-lg shadow-xl">
+  <h2 class="mb-2 text-2xl text-gray-600 font-poppins"><a href="{% url 'login'%}">Login</a> to view this section</h2>
+</div>
+{% endif %}

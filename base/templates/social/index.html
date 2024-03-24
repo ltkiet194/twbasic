@@ -1,0 +1,798 @@
+{% extends 'shared/base_social.html' %}
+{% block title %} Social {% endblock title %}
+{% block content %}
+
+<body class="bg-gray-100 dark:bg-dark-main">
+    <!-- NAV -->
+    <nav class="fixed top-0 z-50 flex flex-col items-center justify-center w-full bg-white border-b shadow dark:bg-dark-second h-max md:h-14 md:flex-row md:justify-between dark:border-dark-third">
+
+        <!-- LEFT NAV -->
+        <div class="flex items-center justify-between w-full px-4 py-2 md:w-max">
+            <a href="#" class="hidden mr-2 md:inline-block">
+                <img src="/static/social-imgs/fb-logo.png" alt="Facebook logo" class="w-24 h-auto sm:w-20 lg:w-10">
+            </a>
+            <a href="#" class="inline-block md:hidden">
+                <img src="/static/social-imgs/fb-logo-mb.png" alt="" class="w-32 h-auto">
+            </a>
+            <div class="flex items-center justify-between space-x-1">
+                <div class="relative flex items-center justify-center w-10 h-10 px-2 py-2 bg-gray-100 rounded-full cursor-pointer dark:bg-dark-third sm:w-11 sm:h-11 lg:h-10 lg:w-10 xl:w-max xl:pl-3 xl:pr-8">
+                    <i class='text-xl bx bx-search-alt-2 xl:mr-2 dark:text-dark-txt'></i>
+                    <input type="text" placeholder="Search Facebook" class="hidden bg-transparent outline-none xl:inline-block">
+                </div>
+                <div class="grid w-10 h-10 text-2xl bg-gray-200 rounded-full cursor-pointer place-items-center md:hidden dark:bg-dark-third hover:bg-gray-300 dark:text-dark-txt">
+                    <i class='bx bxl-messenger'></i>
+                </div>
+                <div class="grid w-10 h-10 text-2xl bg-gray-200 rounded-full cursor-pointer place-items-center md:hidden dark:bg-dark-third hover:bg-gray-300 dark:text-dark-txt" id="dark-mode-toggle-mb">
+                    <i class='bx bxs-moon'></i>
+                </div>
+            </div>
+        </div>
+        <!-- END LEFT NAV -->
+
+        <!-- MAIN NAV -->
+        <ul class="flex items-center justify-center w-full lg:w-max">
+            <li class="w-1/5 text-center md:w-max">
+                <a href="#" class="inline-block w-full px-3 py-2 text-3xl text-center text-blue-500 border-b-4 border-blue-500 cursor-pointer xl:px-12">
+                    <i class='bx bxs-home'></i>
+                </a>
+            </li>
+            <li class="w-1/5 text-center md:w-max">
+                <a href="#" class="relative inline-block w-full px-3 py-2 text-3xl text-center text-gray-600 rounded cursor-pointer xl:px-12 hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt">
+                    <i class='bx bx-movie-play'></i>
+                    <span class="absolute top-0 px-1 text-xs font-semibold text-center text-white bg-red-500 rounded-full right-1/4">9+</span>
+                </a>
+            </li>
+            <li class="w-1/5 text-center md:w-max">
+                <a href="#" class="relative inline-block w-full px-3 py-2 text-3xl text-center text-gray-600 rounded cursor-pointer xl:px-12 hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt">
+                    <i class='bx bx-store'></i>
+                </a>
+            </li>
+            <li class="w-1/5 text-center md:w-max">
+                <a href="#" class="relative inline-block w-full px-3 py-2 text-3xl text-center text-gray-600 rounded cursor-pointer xl:px-12 hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt">
+                    <i class='bx bx-group'></i>
+                </a>
+            </li>
+            <li class="hidden w-1/5 text-center md:w-max md:inline-block">
+                <a href="#" class="relative inline-block w-full px-3 py-2 text-3xl text-center text-gray-600 rounded cursor-pointer xl:px-12 hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt">
+                    <i class='bx bx-layout'></i>
+                    <span class="absolute top-0 px-1 text-xs font-semibold text-center text-white bg-red-500 rounded-full right-1/4">9+</span>
+                </a>
+            </li>
+            <li class="inline-block w-1/5 text-center md:w-max md:hidden">
+                <a href="#" class="relative inline-block w-full px-3 py-2 text-3xl text-center text-gray-600 rounded cursor-pointer xl:px-12 hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt">
+                    <i class='bx bx-menu'></i>
+                </a>
+            </li>
+        </ul>
+        <!-- END MAIN NAV -->
+
+        <!-- RIGHT NAV -->
+        <ul class="items-center justify-center hidden mx-4 md:flex">
+            <li class="hidden h-full xl:flex">
+                <a href="#" class="inline-flex items-center justify-center p-1 mx-1 rounded-full hover:bg-gray-200 dark:hover:bg-dark-third">
+                    <img src="/static/social-imgs/tuat.jpg" alt="Profile picture" class="rounded-full h-7 w-7">
+                    <span class="mx-2 font-semibold dark:text-dark-txt">Tuat</span>
+                </a>
+            </li>
+            <li>
+                <div class="relative hidden p-3 mx-1 text-xl bg-gray-200 rounded-full cursor-pointer xl:grid place-items-center dark:bg-dark-third dark:text-dark-txt hover:bg-gray-300">
+                    <i class='bx bx-plus'></i>
+                </div>
+            </li>
+            <li>
+                <div class="relative hidden p-3 mx-1 text-xl bg-gray-200 rounded-full cursor-pointer xl:grid place-items-center dark:bg-dark-third dark:text-dark-txt hover:bg-gray-300">
+                    <i class='bx bxl-messenger'></i>
+                </div>
+            </li>
+            <li>
+                <div class="relative grid p-3 mx-1 text-xl bg-gray-200 rounded-full cursor-pointer place-items-center dark:bg-dark-third dark:text-dark-txt hover:bg-gray-300">
+                    <i class='bx bxs-bell'></i>
+                    <span class="absolute top-0 right-0 px-1 text-xs font-semibold text-center text-white bg-red-500 rounded-full">9</span>
+                </div>
+            </li>
+            <li>
+                <div class="relative grid p-3 mx-1 text-xl bg-gray-200 rounded-full cursor-pointer place-items-center dark:bg-dark-third dark:text-dark-txt hover:bg-gray-300" id="dark-mode-toggle">
+                    <i class='bx bxs-moon'></i>
+                </div>
+            </li>
+        </ul>
+        <!-- END RIGHT NAV -->
+    </nav>
+    <!-- END NAV -->
+
+    <!-- MAIN -->
+    <div class="flex justify-center h-screen">
+        <!-- LEFT MENU -->
+        <div class="fixed top-0 left-0 flex-col hidden w-1/5 h-full pt-16 xl:flex">
+            <ul class="p-4">
+                <li>
+                    <a href="#" class="flex items-center p-2 space-x-2 transition-all rounded-lg hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                        <img src="/static/social-imgs/tuat.jpg" alt="Profile picture" class="w-10 h-10 rounded-full">
+                        <span class="font-semibold">Tran Anh Tuat</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-2 space-x-2 transition-all rounded-lg hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                        <img src="/static/social-imgs/friends.png" alt="Profile picture" class="w-10 h-10 rounded-full">
+                        <span class="font-semibold">Friends</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-2 space-x-2 transition-all rounded-lg hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                        <img src="/static/social-imgs/page.png" alt="Profile picture" class="w-10 h-10 rounded-full">
+                        <span class="font-semibold">Pages</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-2 space-x-2 transition-all rounded-lg hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                        <img src="/static/social-imgs/memory.png" alt="Profile picture" class="w-10 h-10 rounded-full">
+                        <span class="font-semibold">Memories</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-2 space-x-2 transition-all rounded-lg hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                        <img src="/static/social-imgs/group.png" alt="Profile picture" class="w-10 h-10 rounded-full">
+                        <span class="font-semibold">Groups</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-2 space-x-2 transition-all rounded-lg hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                        <span class="grid w-10 h-10 bg-gray-300 rounded-full place-items-center dark:bg-dark-second">
+                            <i class='bx bx-chevron-down'></i>
+                        </span>
+                        <span class="font-semibold">See more</span>
+                    </a>
+                </li>
+                <li class="mt-6 border-b border-gray-200 dark:border-dark-third"></li>
+            </ul>
+            <div class="flex items-center justify-between h-4 px-4 group">
+                <span class="text-lg font-semibold text-gray-500 dark:text-dark-txt">Your shortcuts</span>
+                <span class="hidden p-2 text-blue-500 rounded-md cursor-pointer hover:bg-gray-200 dark:hover:bg-dark-third group-hover:inline-block">Edit</span>
+            </div>
+            <ul class="p-4">
+                <li>
+                    <a href="#" class="flex items-center p-2 space-x-2 transition-all rounded-lg hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                        <img src="/static/social-imgs/group-img-1.jpg" alt="Profile picture" class="w-10 h-10 rounded-lg">
+                        <span class="font-semibold">Cộng đồng Front-end(HTML/CSS/JS) Việt Nam</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-2 space-x-2 transition-all rounded-lg hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                        <img src="/static/social-imgs/group-img-2.jpg" alt="Profile picture" class="w-10 h-10 rounded-lg">
+                        <span class="font-semibold">CNPM08_UIT_Group học tập</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-2 space-x-2 transition-all rounded-lg hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                        <img src="/static/social-imgs/group-img-3.jpg" alt="Profile picture" class="w-10 h-10 rounded-lg">
+                        <span class="font-semibold">Cộng đồng UI/UX Design vietnam</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-2 space-x-2 transition-all rounded-lg hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                        <img src="/static/social-imgs/group-img-4.jpg" alt="Profile picture" class="w-10 h-10 rounded-lg">
+                        <span class="font-semibold">Nihon Koi</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-2 space-x-2 transition-all rounded-lg hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                        <span class="grid w-10 h-10 bg-gray-300 rounded-full place-items-center dark:bg-dark-second">
+                            <i class='bx bx-chevron-down'></i>
+                        </span>
+                        <span class="font-semibold">See more</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="p-6 mt-auto text-sm text-gray-500 dark:text-dark-txt">
+                <a href="#">Privacy</a>
+                <span>.</span>
+                <a href="#">Terms</a>
+                <span>.</span>
+                <a href="#">Advertising</a>
+                <span>.</span>
+                <a href="#">Cookies</a>
+                <span>.</span>
+                <a href="#">Ad choices</a>
+                <span>.</span>
+                <a href="#">More</a>
+                <span>.</span>
+                <span>Facebook © 2021</span>
+            </div>
+        </div>
+        <!-- END LEFT MENU -->
+
+        <!-- MAIN CONTENT -->
+        <div class="w-full px-2 pt-32 lg:w-3/4 xl:w-3/5 lg:pt-16">
+            <!-- STORY -->
+            <div class="relative flex pt-4 space-x-2">
+                <div class="flex flex-col w-1/4 overflow-hidden shadow cursor-pointer sm:w-1/6 h-44 rounded-xl group">
+                    <div class="overflow-hidden h-3/5">
+                        <img src="/static/social-imgs/profile.jpg" alt="picture" class="transition-all duration-700 group-hover:transform group-hover:scale-110">
+                    </div>
+                    <div class="relative flex items-end justify-center flex-1 pb-2 leading-none text-center dark:bg-dark-second dark:text-dark-txt">
+                        <span class="font-semibold">
+                            Create a <br> Story
+                        </span>
+                        <div class="absolute grid w-10 h-10 text-2xl text-white transform -translate-x-1/2 bg-blue-500 border-4 border-white rounded-full place-items-center dark:border-dark-second -top-5 left-1/2">
+                            <i class='bx bx-plus'></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/4 overflow-hidden sm:w-1/6 h-44 rounded-xl">
+                    <div class="relative h-full cursor-pointer group">
+                        <img src="/static/social-imgs/story.jpg" alt="Story images" class="w-full h-full transition-all duration-700 group-hover:transform group-hover:scale-110">
+                        <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-10"></div>
+                        <span class="absolute bottom-0 pb-2 font-semibold text-white left-2">
+                            Your story
+                        </span>
+                        <div class="absolute w-10 h-10 overflow-hidden border-4 border-blue-500 rounded-full top-2 left-2">
+                            <img src="/static/social-imgs/tuat.jpg" alt="Profile picture">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/4 overflow-hidden sm:w-1/6 h-44 rounded-xl">
+                    <div class="relative h-full cursor-pointer group">
+                        <img src="/static/social-imgs/story-1.jpg" alt="Story images" class="w-full h-full transition-all duration-700 group-hover:transform group-hover:scale-110">
+                        <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-10"></div>
+                        <span class="absolute bottom-0 pb-2 font-semibold text-white left-2">
+                            Lorem
+                        </span>
+                        <div class="absolute w-10 h-10 overflow-hidden border-4 border-blue-500 rounded-full top-2 left-2">
+                            <img src="/static/social-imgs/avt-7.jpg" alt="Profile picture">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/4 overflow-hidden sm:w-1/6 h-44 rounded-xl">
+                    <div class="relative h-full cursor-pointer group">
+                        <img src="/static/social-imgs/story-2.jpg" alt="Story images" class="w-full h-full transition-all duration-700 group-hover:transform group-hover:scale-110">
+                        <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-10"></div>
+                        <span class="absolute bottom-0 pb-2 font-semibold text-white left-2">
+                            John Doe
+                        </span>
+                        <div class="absolute w-10 h-10 overflow-hidden border-4 border-blue-500 rounded-full top-2 left-2">
+                            <img src="/static/social-imgs/avt-6.png" alt="Profile picture">
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden w-1/4 overflow-hidden sm:inline-block sm:w-1/6 h-44 rounded-xl">
+                    <div class="relative h-full cursor-pointer group">
+                        <img src="/static/social-imgs/story-3.jpg" alt="Story images" class="w-full h-full transition-all duration-700 group-hover:transform group-hover:scale-110">
+                        <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-10"></div>
+                        <span class="absolute bottom-0 pb-2 font-semibold text-white left-2">
+                            John Doe
+                        </span>
+                        <div class="absolute w-10 h-10 overflow-hidden border-4 border-blue-500 rounded-full top-2 left-2">
+                            <img src="/static/social-imgs/avt-6.png" alt="Profile picture">
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden w-1/4 overflow-hidden sm:inline-block sm:w-1/6 h-44 rounded-xl">
+                    <div class="relative h-full cursor-pointer group">
+                        <img src="/static/social-imgs/story-4.jpg" alt="Story images" class="w-full h-full transition-all duration-700 group-hover:transform group-hover:scale-110">
+                        <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-10"></div>
+                        <span class="absolute bottom-0 pb-2 font-semibold text-white left-2">
+                            John Doe
+                        </span>
+                        <div class="absolute w-10 h-10 overflow-hidden border-4 border-blue-500 rounded-full top-2 left-2">
+                            <img src="/static/social-imgs/avt-5.jpg" alt="Profile picture">
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute hidden w-12 h-12 text-2xl text-gray-500 transform -translate-y-1/2 bg-white border border-gray-200 rounded-full shadow cursor-pointer lg:grid place-items-center -right-6 top-1/2 hover:bg-gray-100 dark:bg-dark-third dark:border-dark-third dark:text-dark-txt">
+                    <i class='bx bx-right-arrow-alt'></i>
+                </div>
+            </div>
+            <!-- END STORY -->
+
+            <!-- POST FORM -->
+            <div class="px-4 mt-4 bg-white rounded-lg shadow dark:bg-dark-second">
+                <div class="flex p-2 space-x-4 border-b border-gray-300 dark:border-dark-third">
+                    <img src="/static/social-imgs/tuat.jpg" alt="Profile picture" class="w-10 h-10 rounded-full">
+                    <div class="flex items-center justify-start flex-1 pl-4 text-lg text-gray-500 bg-gray-100 rounded-full cursor-pointer dark:bg-dark-third dark:text-dark-txt">
+                        <span>
+                            What's on your mind, Tuat?
+                        </span>
+                    </div>
+                </div>
+                <div class="flex p-2">
+                    <div class="flex items-center justify-center w-1/3 py-2 space-x-2 text-xl text-red-500 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-third sm:text-3xl">
+                        <i class='bx bxs-video-plus'></i>
+                        <span class="text-xs font-semibold text-gray-500 sm:text-sm dark:text-dark-txt">Live video</span>
+                    </div>
+                    <div class="flex items-center justify-center w-1/3 py-2 space-x-2 text-xl text-green-500 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-third sm:text-3xl">
+                        <i class='bx bx-images'></i>
+                        <span class="text-xs font-semibold text-gray-500 sm:text-sm dark:text-dark-txt">Live video</span>
+                    </div>
+                    <div class="flex items-center justify-center w-1/3 py-2 space-x-2 text-xl text-yellow-500 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-third sm:text-3xl">
+                        <i class='bx bx-smile'></i>
+                        <span class="text-xs font-semibold text-gray-500 sm:text-sm dark:text-dark-txt">Live video</span>
+                    </div>
+                </div>
+            </div>
+            <!-- END POST FORM -->
+
+            <!-- ROOM -->
+            <div class="p-4 mt-4 overflow-hidden bg-white rounded-lg shadow dark:bg-dark-second">
+                <div class="relative flex space-x-4">
+                    <div class="flex items-center justify-center w-1/2 space-x-2 border-2 border-blue-200 rounded-full cursor-pointer lg:w-3/12 dark:border-blue-700">
+                        <i class='text-2xl text-purple-500 bx bxs-video-plus'></i>
+                        <span class="text-sm font-semibold text-blue-500">Create Room</span>
+                    </div>
+                    <div class="relative cursor-pointer">
+                        <img src="/static/social-imgs/avt-3.jpg" alt="Profile picture" class="rounded-full">
+                        <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                    </div>
+                    <div class="relative cursor-pointer">
+                        <img src="/static/social-imgs/avt-4.jpg" alt="Profile picture" class="rounded-full">
+                        <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                    </div>
+                    <div class="relative cursor-pointer">
+                        <img src="/static/social-imgs/avt-5.jpg" alt="Profile picture" class="rounded-full">
+                        <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                    </div>
+                    <div class="relative cursor-pointer">
+                        <img src="/static/social-imgs/avt-2.jpg" alt="Profile picture" class="rounded-full">
+                        <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                    </div>
+                    <div class="relative hidden cursor-pointer sm:inline">
+                        <img src="/static/social-imgs/avt-3.jpg" alt="Profile picture" class="rounded-full">
+                        <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                    </div>
+                    <div class="relative hidden cursor-pointer sm:inline">
+                        <img src="/static/social-imgs/avt-4.jpg" alt="Profile picture" class="rounded-full">
+                        <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                    </div>
+                    <div class="relative hidden cursor-pointer sm:inline">
+                        <img src="/static/social-imgs/avt-5.jpg" alt="Profile picture" class="rounded-full">
+                        <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                    </div>
+                    <div class="relative hidden cursor-pointer sm:inline">
+                        <img src="/static/social-imgs/avt-7.jpg" alt="Profile picture" class="rounded-full">
+                        <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                    </div>
+                    <div class="relative hidden cursor-pointer sm:inline">
+                        <img src="/static/social-imgs/avt-3.jpg" alt="Profile picture" class="rounded-full">
+                        <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                    </div>
+                    <div class="absolute right-0 hidden w-12 h-12 text-2xl text-gray-500 transform -translate-y-1/2 bg-white border border-gray-200 rounded-full shadow cursor-pointer lg:grid place-items-center top-1/2 hover:bg-gray-100 dark:bg-dark-third dark:border-dark-third dark:text-dark-txt">
+                        <i class='bx bxs-chevron-right'></i>
+                    </div>
+                </div>
+            </div>
+            <!-- END ROOM -->
+
+            <!-- LIST POST -->
+
+            <div>
+
+                <!-- POST -->
+                <div class="mt-4 bg-white rounded-lg shadow dark:bg-dark-second dark:text-dark-txt">
+                    <!-- POST AUTHOR -->
+                    <div class="flex items-center justify-between px-4 py-2">
+                        <div class="flex items-center space-x-2">
+                            <div class="relative">
+                                <img src="/static/social-imgs/avt-2.jpg" alt="Profile picture" class="w-10 h-10 rounded-full">
+                                <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                            </div>
+                            <div>
+                                <div class="font-semibold">
+                                    John Doe
+                                </div>
+                                <span class="text-sm text-gray-500">38m</span>
+                            </div>
+                        </div>
+                        <div class="grid w-8 h-8 text-xl text-gray-500 rounded-full cursor-pointer place-items-center hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                            <i class='bx bx-dots-horizontal-rounded'></i>
+                        </div>
+                    </div>
+                    <!-- END POST AUTHOR -->
+
+                    <!-- POST CONTENT -->
+                    <div class="px-4 py-2 text-justify">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, autem earum cum ullam odio, molestias maxime aperiam in id aspernatur vel ratione odit molestiae minus ipsa obcaecati quia! Doloribus, illum.
+                    </div>
+                    <!-- END POST CONTENT -->
+
+                    <!-- POST IMAGE -->
+                    <div class="py-2">
+                        <img src="/static/social-imgs/post.png" alt="Post image">
+                    </div>
+                    <!-- END POST IMAGE -->
+
+                    <!-- POST REACT -->
+                    <div class="px-4 py-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex flex-row-reverse items-center">
+                                <span class="ml-2 text-gray-500 dark:text-dark-txt">999</span>
+                                <span class="grid -ml-1 text-2xl text-red-800 rounded-full place-items-center">
+                                    <i class='bx bxs-angry'></i>
+                                </span>
+                                <span class="grid -ml-1 text-2xl text-red-500 rounded-full place-items-center">
+                                    <i class='bx bxs-heart-circle'></i>
+                                </span>
+                                <span class="grid -ml-1 text-2xl text-yellow-500 rounded-full place-items-center">
+                                    <i class='bx bx-happy-alt'></i>
+                                </span>
+                            </div>
+                            <div class="text-gray-500 dark:text-dark-txt">
+                                <span>90 comments</span>
+                                <span>66 Shares</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END POST REACT -->
+
+                    <!-- POST ACTION -->
+                    <div class="px-4 py-2">
+                        <div class="py-1 border border-l-0 border-r-0 border-gray-200 dark:border-dark-third">
+                            <div class="flex space-x-2">
+                                <div class="flex items-center justify-center w-1/3 py-2 space-x-2 text-xl text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt">
+                                    <i class='bx bx-like'></i>
+                                    <span class="text-sm font-semibold">Like</span>
+                                </div>
+                                <div class="flex items-center justify-center w-1/3 py-2 space-x-2 text-xl text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt">
+                                    <i class='bx bx-comment'></i>
+                                    <span class="text-sm font-semibold">Comment</span>
+                                </div>
+                                <div class="flex items-center justify-center w-1/3 py-2 space-x-2 text-xl text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt">
+                                    <i class='bx bx-share bx-flip-horizontal'></i>
+                                    <span class="text-sm font-semibold">Share</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END POST ACTION -->
+
+                    <!-- LIST COMMENT -->
+                    <div class="px-4 py-2">
+                        <!-- COMMENT -->
+                        <div class="flex space-x-2">
+                            <img src="/static/social-imgs/avt-5.jpg" alt="Profile picture" class="rounded-full w-9 h-9">
+                            <div>
+                                <div class="p-2 text-sm bg-gray-100 dark:bg-dark-third rounded-2xl">
+                                    <span class="block font-semibold">John Doe</span>
+                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                                </div>
+                                <div class="p-2 text-xs text-gray-500 dark:text-dark-txt">
+                                    <span class="font-semibold cursor-pointer">Like</span>
+                                    <span>.</span>
+                                    <span class="font-semibold cursor-pointer">Reply</span>
+                                    <span>.</span>
+                                    10m
+                                </div>
+                                <!-- COMMENT -->
+                                <div class="flex space-x-2">
+                                    <img src="/static/social-imgs/avt-7.jpg" alt="Profile picture" class="rounded-full w-9 h-9">
+                                    <div>
+                                        <div class="p-2 text-sm bg-gray-100 dark:bg-dark-third rounded-2xl">
+                                            <span class="block font-semibold">John Doe</span>
+                                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                                        </div>
+                                        <div class="p-2 text-xs text-gray-500 dark:text-dark-txt">
+                                            <span class="font-semibold cursor-pointer">Like</span>
+                                            <span>.</span>
+                                            <span class="font-semibold cursor-pointer">Reply</span>
+                                            <span>.</span>
+                                            10m
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END COMMENT -->
+                            </div>
+                        </div>
+                        <!-- END COMMENT -->
+                        <!-- COMMENT -->
+                        <div class="flex space-x-2">
+                            <img src="/static/social-imgs/avt-5.jpg" alt="Profile picture" class="rounded-full w-9 h-9">
+                            <div>
+                                <div class="p-2 text-sm bg-gray-100 dark:bg-dark-third rounded-2xl">
+                                    <span class="block font-semibold">John Doe</span>
+                                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In voluptate ipsa animi corrupti unde, voluptatibus expedita suscipit, itaque, laudantium accusantium aspernatur officia repellendus nihil mollitia soluta distinctio praesentium nulla eos?</span>
+                                </div>
+                                <div class="p-2 text-xs text-gray-500 dark:text-dark-txt">
+                                    <span class="font-semibold cursor-pointer">Like</span>
+                                    <span>.</span>
+                                    <span class="font-semibold cursor-pointer">Reply</span>
+                                    <span>.</span>
+                                    10m
+                                </div>
+                                <!-- COMMENT -->
+                                <div class="flex space-x-2">
+                                    <img src="/static/social-imgs/avt-7.jpg" alt="Profile picture" class="rounded-full w-9 h-9">
+                                    <div>
+                                        <div class="p-2 text-sm bg-gray-100 dark:bg-dark-third rounded-2xl">
+                                            <span class="block font-semibold">John Doe</span>
+                                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                                        </div>
+                                        <div class="p-2 text-xs text-gray-500 dark:text-dark-txt">
+                                            <span class="font-semibold cursor-pointer">Like</span>
+                                            <span>.</span>
+                                            <span class="font-semibold cursor-pointer">Reply</span>
+                                            <span>.</span>
+                                            10m
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END COMMENT -->
+                            </div>
+                        </div>
+                        <!-- END COMMENT -->
+                    </div>
+                    <!-- END LIST COMMENT -->
+
+                    <!-- COMMENT FORM -->
+                    <div class="px-4 py-2">
+                        <div class="flex space-x-2">
+                            <img src="/static/social-imgs/tuat.jpg" alt="Profile picture" class="rounded-full w-9 h-9">
+                            <div class="flex items-center justify-between flex-1 px-3 bg-gray-100 rounded-full dark:bg-dark-third">
+                                <input type="text" placeholder="Write a comment..." class="flex-1 bg-transparent outline-none">
+                                <div class="flex items-center justify-center space-x-0">
+                                    <span class="grid text-xl text-gray-500 rounded-full cursor-pointer w-7 h-7 place-items-center hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-second"><i class='bx bx-smile'></i></span>
+                                    <span class="grid text-xl text-gray-500 rounded-full cursor-pointer w-7 h-7 place-items-center hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-second"><i class='bx bx-camera'></i></span>
+                                    <span class="grid text-xl text-gray-500 rounded-full cursor-pointer w-7 h-7 place-items-center hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-second"><i class='bx bxs-file-gif'></i></span>
+                                    <span class="grid text-xl text-gray-500 rounded-full cursor-pointer w-7 h-7 place-items-center hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-second"><i class='bx bx-happy-heart-eyes'></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END COMMENT FORM -->
+                </div>
+                <!-- END POST -->
+
+                <!-- POST -->
+                <div class="mt-4 bg-white rounded-lg shadow dark:bg-dark-second dark:text-dark-txt">
+                    <!-- POST AUTHOR -->
+                    <div class="flex items-center justify-between px-4 py-2">
+                        <div class="flex items-center space-x-2">
+                            <div class="relative">
+                                <img src="/static/social-imgs/avt-2.jpg" alt="Profile picture" class="w-10 h-10 rounded-full">
+                                <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                            </div>
+                            <div>
+                                <div class="font-semibold">
+                                    John Doe
+                                </div>
+                                <span class="text-sm text-gray-500">38m</span>
+                            </div>
+                        </div>
+                        <div class="grid w-8 h-8 text-xl text-gray-500 rounded-full cursor-pointer place-items-center hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third">
+                            <i class='bx bx-dots-horizontal-rounded'></i>
+                        </div>
+                    </div>
+                    <!-- END POST AUTHOR -->
+
+                    <!-- POST CONTENT -->
+                    <div class="px-4 py-2 text-justify">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, autem earum cum ullam odio, molestias maxime aperiam in id aspernatur vel ratione odit molestiae minus ipsa obcaecati quia! Doloribus, illum.
+                    </div>
+                    <!-- END POST CONTENT -->
+
+                    <!-- POST IMAGE -->
+                    <div class="py-2">
+                        <div class="grid grid-cols-2 gap-1">
+                            <img src="/static/social-imgs/post-2 (1).jpg" alt="Post image">
+                            <img src="/static/social-imgs/post-2 (2).jpg" alt="Post image">
+                            <img src="/static/social-imgs/post-2 (3).jpg" alt="Post image">
+                            <img src="/static/social-imgs/post-2 (4).jpg" alt="Post image">
+                        </div>
+                    </div>
+                    <!-- END POST IMAGE -->
+
+                    <!-- POST REACT -->
+                    <div class="px-4 py-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex flex-row-reverse items-center">
+                                <span class="ml-2 text-gray-500 dark:text-dark-txt">999</span>
+                                <span class="grid -ml-1 text-2xl text-red-800 rounded-full place-items-center">
+                                    <i class='bx bxs-angry'></i>
+                                </span>
+                                <span class="grid -ml-1 text-2xl text-red-500 rounded-full place-items-center">
+                                    <i class='bx bxs-heart-circle'></i>
+                                </span>
+                                <span class="grid -ml-1 text-2xl text-yellow-500 rounded-full place-items-center">
+                                    <i class='bx bx-happy-alt'></i>
+                                </span>
+                            </div>
+                            <div class="text-gray-500 dark:text-dark-txt">
+                                <span>90 comments</span>
+                                <span>66 Shares</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END POST REACT -->
+
+                    <!-- POST ACTION -->
+                    <div class="px-4 py-2">
+                        <div class="py-1 border border-l-0 border-r-0 border-gray-200 dark:border-dark-third">
+                            <div class="flex space-x-2">
+                                <div class="flex items-center justify-center w-1/3 py-2 space-x-2 text-xl text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt">
+                                    <i class='bx bx-like'></i>
+                                    <span class="text-sm font-semibold">Like</span>
+                                </div>
+                                <div class="flex items-center justify-center w-1/3 py-2 space-x-2 text-xl text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt">
+                                    <i class='bx bx-comment'></i>
+                                    <span class="text-sm font-semibold">Comment</span>
+                                </div>
+                                <div class="flex items-center justify-center w-1/3 py-2 space-x-2 text-xl text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt">
+                                    <i class='bx bx-share bx-flip-horizontal'></i>
+                                    <span class="text-sm font-semibold">Share</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END POST ACTION -->
+
+                    <!-- LIST COMMENT -->
+                    <div class="px-4 py-2">
+                        <!-- COMMENT -->
+                        <div class="flex space-x-2">
+                            <img src="/static/social-imgs/avt-5.jpg" alt="Profile picture" class="rounded-full w-9 h-9">
+                            <div>
+                                <div class="p-2 text-sm bg-gray-100 dark:bg-dark-third rounded-2xl">
+                                    <span class="block font-semibold">John Doe</span>
+                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                                </div>
+                                <div class="p-2 text-xs text-gray-500 dark:text-dark-txt">
+                                    <span class="font-semibold cursor-pointer">Like</span>
+                                    <span>.</span>
+                                    <span class="font-semibold cursor-pointer">Reply</span>
+                                    <span>.</span>
+                                    10m
+                                </div>
+                                <!-- COMMENT -->
+                                <div class="flex space-x-2">
+                                    <img src="/static/social-imgs/avt-7.jpg" alt="Profile picture" class="rounded-full w-9 h-9">
+                                    <div>
+                                        <div class="p-2 text-sm bg-gray-100 dark:bg-dark-third rounded-2xl">
+                                            <span class="block font-semibold">John Doe</span>
+                                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                                        </div>
+                                        <div class="p-2 text-xs text-gray-500 dark:text-dark-txt">
+                                            <span class="font-semibold cursor-pointer">Like</span>
+                                            <span>.</span>
+                                            <span class="font-semibold cursor-pointer">Reply</span>
+                                            <span>.</span>
+                                            10m
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END COMMENT -->
+                            </div>
+                        </div>
+                        <!-- END COMMENT -->
+                        <!-- COMMENT -->
+                        <div class="flex space-x-2">
+                            <img src="/static/social-imgs/avt-5.jpg" alt="Profile picture" class="rounded-full w-9 h-9">
+                            <div>
+                                <div class="p-2 text-sm bg-gray-100 dark:bg-dark-third rounded-2xl">
+                                    <span class="block font-semibold">John Doe</span>
+                                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In voluptate ipsa animi corrupti unde, voluptatibus expedita suscipit, itaque, laudantium accusantium aspernatur officia repellendus nihil mollitia soluta distinctio praesentium nulla eos?</span>
+                                </div>
+                                <div class="p-2 text-xs text-gray-500 dark:text-dark-txt">
+                                    <span class="font-semibold cursor-pointer">Like</span>
+                                    <span>.</span>
+                                    <span class="font-semibold cursor-pointer">Reply</span>
+                                    <span>.</span>
+                                    10m
+                                </div>
+                                <!-- COMMENT -->
+                                <div class="flex space-x-2">
+                                    <img src="/static/social-imgs/avt-7.jpg" alt="Profile picture" class="rounded-full w-9 h-9">
+                                    <div>
+                                        <div class="p-2 text-sm bg-gray-100 dark:bg-dark-third rounded-2xl">
+                                            <span class="block font-semibold">John Doe</span>
+                                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                                        </div>
+                                        <div class="p-2 text-xs text-gray-500 dark:text-dark-txt">
+                                            <span class="font-semibold cursor-pointer">Like</span>
+                                            <span>.</span>
+                                            <span class="font-semibold cursor-pointer">Reply</span>
+                                            <span>.</span>
+                                            10m
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END COMMENT -->
+                            </div>
+                        </div>
+                        <!-- END COMMENT -->
+                    </div>
+                    <!-- END LIST COMMENT -->
+
+                    <!-- COMMENT FORM -->
+                    <div class="px-4 py-2">
+                        <div class="flex space-x-2">
+                            <img src="/static/social-imgs/tuat.jpg" alt="Profile picture" class="rounded-full w-9 h-9">
+                            <div class="flex items-center justify-between flex-1 px-3 bg-gray-100 rounded-full dark:bg-dark-third">
+                                <input type="text" placeholder="Write a comment..." class="flex-1 bg-transparent outline-none">
+                                <div class="flex items-center justify-center space-x-0">
+                                    <span class="grid text-xl text-gray-500 rounded-full cursor-pointer w-7 h-7 place-items-center hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-second"><i class='bx bx-smile'></i></span>
+                                    <span class="grid text-xl text-gray-500 rounded-full cursor-pointer w-7 h-7 place-items-center hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-second"><i class='bx bx-camera'></i></span>
+                                    <span class="grid text-xl text-gray-500 rounded-full cursor-pointer w-7 h-7 place-items-center hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-second"><i class='bx bxs-file-gif'></i></span>
+                                    <span class="grid text-xl text-gray-500 rounded-full cursor-pointer w-7 h-7 place-items-center hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-second"><i class='bx bx-happy-heart-eyes'></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END COMMENT FORM -->
+                </div>
+                <!-- END POST -->
+
+            </div>
+
+            <!-- END LIST POST -->
+        </div>
+        <!-- END MAIN CONTENT -->
+
+        <!-- RIGHT MENU -->
+        <div class="fixed top-0 right-0 hidden w-1/5 h-full px-4 pt-16 xl:block">
+            <div class="h-full">
+                <div class="flex items-center justify-between px-4 pt-4">
+                    <span class="text-lg font-semibold text-gray-500 dark:text-dark-txt">Firend requests</span>
+                    <span class="p-2 text-blue-500 rounded-md cursor-pointer hover:bg-gray-200 dark:hover:bg-dark-third">See All</span>
+                </div>
+                <div class="p-2">
+                    <a href="#" class="flex items-center p-2 space-x-4 transition-all rounded-lg hover:bg-gray-200 dark:hover:bg-dark-third">
+                        <img src="/static/social-imgs/avt.jpg" alt="Profile picture" class="w-12 h-12 rounded-full">
+                        <div class="flex-1 h-full">
+                            <div class="dark:text-dark-txt">
+                                <span class="font-semibold">Sakura Hinata</span>
+                                <span class="float-right">6d</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <div class="w-1/2 py-1 font-semibold text-center text-white bg-blue-500 rounded-lg cursor-pointer">
+                                    Confirm
+                                </div>
+                                <div class="w-1/2 py-1 font-semibold text-center text-black bg-gray-300 rounded-lg cursor-pointer">
+                                    Delete
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="mt-6 border-b border-gray-200 dark:border-dark-third"></div>
+                <!-- CONTACTS -->
+                <div class="flex items-center justify-between px-4 pt-4 text-gray-500 dark:text-dark-txt">
+                    <span class="text-lg font-semibold">Contacts</span>
+                    <div class="flex space-x-1">
+                        <div class="grid w-8 h-8 text-xl rounded-full cursor-pointer place-items-center hover:bg-gray-200 dark:hover:bg-dark-third">
+                            <i class='bx bx-search-alt-2'></i>
+                        </div>
+                        <div class="grid w-8 h-8 text-xl rounded-full cursor-pointer place-items-center hover:bg-gray-200 dark:hover:bg-dark-third">
+                            <i class='bx bx-dots-horizontal-rounded'></i>
+                        </div>
+                    </div>
+                </div>
+                <ul class="p-2">
+                    {% for _ in "x"|rjust:10 %}
+                    <li>
+                        <div class="flex items-center p-2 space-x-4 rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt">
+                            <div class="relative">
+                                <img src="/static/social-imgs/avt-3.jpg" alt="Friends profile picture" class="rounded-full w-14 h14">
+                                <span class="absolute right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full top-3/4"></span>
+                            </div>
+                            <div>
+                                <span class="font-semibold">Chin Chin</span>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <!-- END CONTACTS -->
+            </div>
+        </div>
+        <!-- END RIGHT MENU -->
+    </div>
+    <!-- END MAIN -->
+
+    <script >
+        document.querySelector('#dark-mode-toggle').onclick = () => {
+            document.documentElement.classList.toggle('dark')
+        }
+        
+        document.querySelector('#dark-mode-toggle-mb').onclick = () => {
+            document.documentElement.classList.toggle('dark')
+        }
+    </script>
+</body>
+{% endblock content %}

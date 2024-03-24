@@ -1,0 +1,36 @@
+<div  class="mx-1 mb-12 row deck preload" > 
+    <div id="game_list" class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6">
+        {% for item in game %}
+            <div class="p-1 dark:bg-black bg-slate-300 rounded-xl">
+                <div class="p-1 item content card loaded">
+                    <ul class="flex flex-row pb-2 mt-1 text-xs sm:flex">
+                        <li class="inline-flex justify-center flex-shrink sm:mx-2"><i class="fa fa-star"> 4.8</i></li>  
+                        <li class="flex-grow-1"></li>                                      
+                        <li class="inline-flex justify-center flex-shrink sm:mx-2"><i class="fa fa-download"> {{item.numSale}}</i></li>
+                    </ul>
+                    <a href="{% url 'game_detail' item.slug %}">
+                        <div class="relative">
+                            {% if item.isDiscount %}
+                                <span class="absolute top-0 left-0 p-[2px] text-sm bg-yellow-300 rounded-ee-xl opacity-90">
+                                    {{item.discountPercent}}% OFF
+                                </span>
+                            {% endif %}
+                            <img src="/static/Theme/images/ImageResource/{{item.imgName}}" alt="">
+                        </div>
+                        <div class="relative flex items-center group">
+                            <h5 class="mt-1 overflow-hidden text-black min-w-fit line-clamp-1 dark:text-white">{{item.nameGame}}</h5>
+                        </div>
+                    </a>
+                    <div class="flex">
+                        <del class="mt-2 text-[10px]">$ {{item.priceGame}}</del>
+                        <p class="justify-center flex-shrink mx-2"><i class="fa fa-dollar text-rose-500" aria-hidden="true"> {{item.priceGameNow}}</i></p>
+                        <button onclick="AddToCart('{{item.slug}}')" class="flex px-3 text-white transition duration-200 ease-in bg-red-400 border-2 rounded-full w-sm hover:bg-red-500 focus:outline-none">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>                      
+</div>

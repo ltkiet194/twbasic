@@ -44,6 +44,12 @@ module.exports = {
     ],
     theme: {
         extend: {
+            colors: {
+                'dark-main': '#18191A',
+                'dark-second': '#242526',
+                'dark-third': '#3A3B3C',
+                'dark-txt': '#B8BBBF'
+              },
             fontFamily: {
                 poppins: ['Poppins', 'sans-serif'],
                 satoshi: ['Satoshi', 'sans-serif'],

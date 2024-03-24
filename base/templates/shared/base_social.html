@@ -8,7 +8,9 @@
         * {
             scroll-behavior:smooth
         }
+    
     </style>
+    
     <style >
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
         * {
@@ -46,7 +48,6 @@
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="/static/theme/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/static/theme/assets/css/templatemo-cyborg-gaming.css">
     <link rel="stylesheet" href="/static/theme/assets/css/owl.css">
     <link rel="stylesheet" href="/static/theme/assets/css/animate.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
@@ -54,10 +55,6 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     {% tailwind_css %}
-
-    <!-- Bootstrap core CSS -->
-
-
 
 </head>
 
@@ -70,8 +67,6 @@
             </div>
         </div>
     <!-- ===== Preloader End ===== -->
-
-
     <!-- ===== Page Wrapper Start ===== -->
     <div class="relative flex h-screen overflow-hidden">
         {% include 'home/sidebar.html' %}
@@ -88,51 +83,9 @@
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
-    <script>
-        document.addEventListener('alpine:init', () => {
-        Alpine.store('toasts', {
-        counter: 0,
-        list: [],
-        createToast(message, type = 'info', timer = 2000) {
-            const index = this.list.length
-            let totalVisible =
-                this.list.filter((toast) => {
-                return toast.visible
-                }).length + 1
-            this.list.push({
-                id: this.counter++,
-                message,
-                type,
-                timeOut: timer * totalVisible,
-                visible: true,
-            })
-        setTimeout(() => {
-            this.destroyToast(index)
-          }, timer * totalVisible)
-        },
-        destroyToast(index) {
-            this.list[index].visible = false
-        },
-        })
-        })
-        </script>
-        <script>
-            document.addEventListener('alpine:initialized', () => {
-            
-            })
+    <script src="/static/theme/vendor/jquery/jquery.min.js"></script>
 
-            function ToastNotification(message, type){
-                Alpine.store('toasts').createToast(
-                    message,
-                    type
-                )
-            }
-        </script>
-        <a href=""></a>
-    <script src="/static/main.js"></script>
-    <script>
-        setUserData('{{user_session.Username}}')
-    </script>
+    <script src="/static/theme/assets/js/isotope.min.js"></script>
     <script src="/static/theme/assets/js/owl-carousel.js"></script>
     <script src="/static/theme/assets/js/tabs.js"></script>
     <script src="/static/theme/assets/js/popup.js"></script>

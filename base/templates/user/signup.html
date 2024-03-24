@@ -1,0 +1,90 @@
+<!-- source:https://codepen.io/owaiswiz/pen/jOPvEPB -->
+
+{% extends 'shared/base_edu.html' %}
+{% block title %} Sing up {% endblock title %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-content">
+                <div class="p-10 bg-slate-600">
+                    <h1 class="mb-8 text-4xl font-extrabold">Register</h1>
+                    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                        <form method="post" action="{% url 'signup'%}">
+                            <div class="flex">
+                                <div class="mt-4 ">
+                                    {% csrf_token %}
+                                    <label class="block font-semibold" for="fullName">Full Name</label>
+                                    <input class="block w-full p-4 mt-1 text-2xl placeholder-gray-400 bg-gray-100 border-none rounded-lg shadow-inner"
+                                            placeholder="John Doe" 
+                                            id="fullName" 
+                                            type="text" 
+                                            name="fullName" 
+                                            required="required" 
+                                            autofocus="autofocus">
+                                </div>
+                                <div class="mx-2 mt-4">
+                                    <label class="block font-semibold" for="name">Username</label>
+                                    <input class="block w-full p-4 mt-1 text-2xl placeholder-gray-400 bg-gray-100 border-none rounded-lg shadow-inner" 
+                                            placeholder="JohnDoeDev" 
+                                            id="name" 
+                                            type="text" 
+                                            name="name" 
+                                            required="required">
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <label class="block font-semibold" for="email">Email</label>
+                                <input class="block w-full p-4 mt-1 text-2xl placeholder-gray-400 bg-gray-100 border-none rounded-lg shadow-inner" 
+                                        placeholder="example@gmail.com" 
+                                        id="email" 
+                                        type="email" 
+                                        name="email" 
+                                        required="required">
+                            </div>
+                
+                            <div class="mt-4">
+                                <label class="block font-semibold" for="password">Password</label>
+                                <input class="block w-full p-4 mt-1 text-2xl placeholder-gray-400 bg-gray-100 border-none rounded-lg shadow-inner" 
+                                        placeholder="abc#@%abc" 
+                                        id="password" 
+                                        type="password" 
+                                        name="password" 
+                                        required="required" 
+                                        autocomplete="new-password">
+                            </div>
+                
+                            <div class="flex items-center justify-between mt-8">
+                                <button type="submit" class="flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">Register</button>
+                                <a class="font-semibold cursor-pointer hover:text-red-600">
+                                    Already registered?
+                                </a>
+                            </div>
+                        </form>
+                
+                        <aside class="">
+                            <div class="p-8 bg-gray-200 rounded">
+                                <h2 class="text-2xl font-bold text-black">Instructions</h2>
+                                <ul class="mt-4 list-disc list-inside *:text-gray-800">
+                                    <li>All users must provide a valid email address and password to create an account.</li>
+                                    <li>username must be lower key and note have spacing</li>
+                                    <li>Users must not use offensive, vulgar, or otherwise inappropriate language in their username or profile information</li>
+                                    <li>Users must not create multiple accounts for the same person.</li>
+                                </ul>
+                            </div>
+                        </aside>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}

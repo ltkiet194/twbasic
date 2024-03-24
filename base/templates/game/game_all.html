@@ -1,0 +1,251 @@
+
+{% extends 'shared/base_edu.html' %}
+{% block title %} Register {% endblock title %}
+{% block content %}
+<style>
+    .deck {
+        display:flex;
+        margin:0;
+        padding:0;
+    }
+    
+    .card {
+        opacity:.5;
+        transform:translateX(100vw) translateY(100vh) rotate(15deg);
+        transition:all 1s ease-out;
+    }
+    
+    .card .content {
+        opacity:0;
+        transition:all 2s ease-out;
+    }
+    
+    .card.loaded {
+        opacity:1;
+        transform:translateX(0) translateY(0) rotate(0);
+    }
+    
+    .card.loaded .content.loaded {
+        opacity:1;
+    }
+    .scrolltop .icon {
+        font-size: 30px;
+        text-align: center;
+        transform: rotate(-45deg);
+        margin-top: 10px;
+    }
+    
+    .scrolltop {
+        position: fixed;
+        bottom: 70px;
+        right: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #fff;
+        display: none;
+    }
+</style>
+<div id="mainContent" class="container mt-1">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-content p-2 dark:bg-[#1e1e1e] bg-slate-200">               
+                <!-- ***** Most Popular Start ***** -->
+                <div class="mt-2 mb-4 most-popular">
+                    <div class="row">
+                        <div class="col-lg-12">
+                        <div class="mx-5 mt-3 mb-1 heading-section">
+                            <h4><em>Trending</em> Game</h4>
+                        </div>
+                        {% include 'game/grid_game.html' with game=game %}                    
+
+                        <div class="flex justify-center mt-3 col-lg-12">
+                            <nav aria-label="Page navigation example">
+                                <div id="ulPage" class="inline-flex h-10 text-base">
+                                    <button onclick="change_page_ajax(1)" class="mx-1 load">
+                                        <p href="" class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 rounded-lg ms-0 border-e-0 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        1</button>
+                                    </button>
+                                    <button onclick="change_page_ajax(2)" class="mx-1 load">
+                                        <p href="" class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 rounded-lg ms-0 border-e-0 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        2</button>
+                                    </button>
+                                    <button onclick="change_page_ajax(3)" class="mx-1 load">
+                                        <p href="" class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 rounded-lg ms-0 border-e-0 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        3</button>
+                                    </button>
+                                    <button onclick="change_page_ajax(4)" class="mx-1 load">
+                                        <p href="" class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 rounded-lg ms-0 border-e-0 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        4</button>
+                                    </button>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- ***** Most Popular End ***** -->
+                <!-- ***** Gaming Library Start ***** -->
+                <div class="gaming-library">
+                <div class="col-lg-12">
+                    <div class="heading-section">
+                    <h4><em>Your Gaming</em> Library</h4>
+                    </div>
+                    <div class="item">
+                    <ul>
+                        <li><img src="/static/theme/assets/images/game-01.jpg" alt="" class="templatemo-item"></li>
+                        <li><h4>Dota 2</h4><span>Sandbox</span></li>
+                        <li><h4>Date Added</h4><span>24/08/2036</span></li>
+                        <li><h4>Hours Played</h4><span>634 H 22 Mins</span></li>
+                        <li><h4>Currently</h4><span>Downloaded</span></li>
+                        <li><div class="main-border-button border-no-active"><a href="#">Donwloaded</a></div></li>
+                    </ul>
+                    </div>
+                    <div class="item">
+                    <ul>
+                        <li><img src="/static/theme/assets/images/game-02.jpg" alt="" class="templatemo-item"></li>
+                        <li><h4>Fortnite</h4><span>Sandbox</span></li>
+                        <li><h4>Date Added</h4><span>22/06/2036</span></li>
+                        <li><h4>Hours Played</h4><span>740 H 52 Mins</span></li>
+                        <li><h4>Currently</h4><span>Downloaded</span></li>
+                        <li><div class="main-border-button"><a href="#">Donwload</a></div></li>
+                    </ul>
+                    </div>
+                    <div class="item last-item">
+                    <ul>
+                        <li><img src="/static/theme/assets/images/game-03.jpg" alt="" class="templatemo-item"></li>
+                        <li><h4>CS-GO</h4><span>Sandbox</span></li>
+                        <li><h4>Date Added</h4><span>21/04/2036</span></li>
+                        <li><h4>Hours Played</h4><span>892 H 14 Mins</span></li>
+                        <li><h4>Currently</h4><span>Downloaded</span></li>
+                        <li><div class="main-border-button border-no-active"><a href="#">Donwloaded</a></div></li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="main-button">
+                    <a href="profile.html">View Your Library</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function change_page_ajax(page) {
+        var baseUrl = window.location.origin;
+        var apiUrl = `${baseUrl}/api/v1/game/all/${page}`; // Sửa 'page=' thành '?page='
+        console.log(apiUrl)
+        scrolltoTop()
+        fetch(apiUrl).then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json(); // Chuyển dữ liệu response sang JSON
+                    })
+                    .then(data => showData(data))
+                    .catch(error => console.error('Error fetching data:', error)); // Bắt lỗi fetch
+    }
+
+    function showData(data) {
+        console.log(data.listpage)
+        console.log(data.pageCurrent)
+        $("#ulPage").empty()
+        for(let i = 0;i<data.listpage.length;i++)
+        { 
+            
+            var newButton = $(`
+                <button onclick="change_page_ajax(${data.listpage[i]})" class="mx-1 load">
+                    <p href="" class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 rounded-lg ms-0 border-e-0 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    ${data.listpage[i]}</button>
+                </button>
+            `);
+            if(data.pageCurrent ===data.listpage[i]){
+                newButton = $(`
+                <button onclick="change_page_ajax(${data.listpage[i]})" class="mx-1 load">
+                    <p href="" class="flex items-center justify-center h-10 px-4 leading-tight text-gray-500 bg-white border border-gray-300 rounded-lg ms-0 border-e-0 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-500 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    ${data.listpage[i]}</button>
+                </button>
+            `);
+            }
+            $("#ulPage").append(newButton)
+
+        }
+
+        // Không cần parse dữ liệu JSON lần nữa ở đây vì đã parse trong fetch
+        $("#game_list").empty(); // Di chuyển để chỉ gọi một lần ngoài vòng lặp
+        data.datagame.forEach(gamejson => { // Sử dụng forEach thay vì for để lặp qua mảng
+            const newMember = $(`
+            <div class="p-1 dark:bg-black bg-slate-300 rounded-xl">
+                <div class="p-1 item card">               
+                        <ul class="flex flex-row pb-2 mt-1 text-xs sm:flex">
+                            <li class="inline-flex justify-center flex-shrink sm:mx-2"><i class="fa fa-star"> 4.8</i></li>  
+                            <li class="flex-grow-1"></li>                                      
+                            <li class="inline-flex justify-center flex-shrink sm:mx-2"><i class="fa fa-download"> ${gamejson.numSale}</i></li>
+                        </ul>
+                        <a href="{% url 'game_detail' %}${gamejson.slug}"> <!-- Chỉnh sửa phần href -->
+                            <div class="relative">
+                                <span class="absolute top-0 left-0 p-[2px] text-sm bg-yellow-300 rounded-ee-xl opacity-90">
+                                    ${gamejson.discountPercent} % OFF
+                                </span>
+                                <img src="/static/Theme/images/ImageResource/${gamejson.imgName}" alt="">
+                            </div>
+                        </a>
+                        <div class="relative flex items-center group">
+                            <h5 class="mt-1 overflow-hidden text-black min-w-fit line-clamp-1 dark:text-white">${gamejson.nameGame}</h5>
+                            <div class="absolute left-0 flex items-center hidden w-screen group-hover:flex">
+                                <span class="relative z-10 py-[1px] px-2 text-white whitespace-no-wrap mt-1 bg-gray-300 rounded shadow-lg">${gamejson.nameGame}</span>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <del class="mt-2 text-[10px]">$ ${gamejson.priceGame}</del>
+                            <p class="justify-center flex-shrink mx-2"><i class="fa fa-dollar text-rose-500" aria-hidden="true">${gamejson.priceGameNow}</i></p>
+                        </div>                     
+                    </div>
+                </div>
+            `);
+            $("#game_list").append(newMember)
+        });
+        load()
+
+    }
+    
+    function move(card, index) {
+        setTimeout(function() {
+            card.classList.toggle('loaded');
+        },100 * index);
+    };
+        
+    function fade(card, index) {
+        setTimeout(function() {
+            card.querySelector('.content').classList.toggle('loaded');
+        }, 100 * index);
+    }
+    
+    function load() {
+    // converting nodelist to array for some browsers
+        const cards = [].slice.call(document.querySelectorAll('.card'));
+        cards.forEach(move);
+    //  setTimeout(function() {
+    //    cards.forEach(fade);
+    //  }, 10 * cards.length);     
+    }
+    
+    document.querySelector('.load').addEventListener('click', load);
+
+    
+    
+    function scrolltoTop(){
+        var main = document.getElementById('relativeContent');
+        let i = main.scrollTop
+        for(i; i >0; i--)
+        {
+            main.scrollTop=i
+        }
+    }
+</script>
+
+
+{% endblock content %}

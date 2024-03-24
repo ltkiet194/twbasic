@@ -170,9 +170,10 @@
                         <div class="mx-5 mt-3 mb-1 heading-section">
                             <h4><em>Trending</em> Game</h4>
                         </div>
-                        <div class="mx-1 mb-12 row">                       
-                            {% for item in game_suggest %}
-                                <div class="p-1 col-lg-2 col-sm-4">
+                        <div class="mx-1 mb-12 row">   
+                            <div class="grid grid-cols-2 gap-1 sm:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6">
+                                {% for item in game_suggest %}
+                                <div class="p-1 col-lg-2 col-sm-4 dark:bg-black bg-slate-300 rounded-xl">
                                     <div class="p-1 item">
                                         <ul class="flex flex-row pb-2 mt-1 text-xs sm:flex">
                                             <li class="inline-flex justify-center flex-shrink sm:mx-2"><i class="fa fa-star"> 4.8</i></li>  
@@ -181,7 +182,7 @@
                                         </ul>
                                         {% load filter %}
 
-                                        <a href="{% url 'product_details' item|get_id %}">
+                                        <a href="{% url 'game_detail' item.slug %}">
                                             <div class="relative">
                                                 {% if item.isDiscount %}
                                                     <span class="absolute top-0 left-0 p-[2px] text-sm bg-yellow-300 rounded-ee-xl opacity-90">
@@ -193,22 +194,25 @@
                                         </a>
                                             <!-- Component Start -->
                                             <div class="relative flex items-center group">
-                                                <h5 class="mt-1 overflow-hidden min-w-fit line-clamp-1">{{item.nameGame}}</h5>
+                                                <h5 class="mt-1 overflow-hidden text-black min-w-fit line-clamp-1 dark:text-white">{{item.nameGame}}</h5>
                                                 <div class="absolute left-0 flex items-center hidden w-screen group-hover:flex">
-                                                    <span class="relative z-10 py-[1px] px-2 text-white whitespace-no-wrap mt-1 bg-gray-300 rounded shadow-lg">{{item.nameGame}}</span>
+                                                    <span class="relative z-10 py-[1px] px-2 text-xs text-white whitespace-no-wrap mt-1 bg-gray-300 rounded shadow-lg">{{item.nameGame}}</span>
                                                 </div>
                                             </div>
                                             <!-- Component End  -->
-                                            <del class="mt-2 text-xs text-red-700">$ {{item.priceGame}}</del>
-                                            <p class="inline-block mt-2 ml-1 text-[15px]">${{item.priceGameNow}}</p>
+                                            <div class="flex">
+                                                <del class="mt-2 text-[10px]">$ {{item.priceGame}}</del>
+                                                <p class="justify-center flex-shrink mx-2"><i class="fa fa-dollar text-rose-500" aria-hidden="true"> {{item.priceGameNow}}</i></p>
+                                            </div>
                                         </a>
                                     </div>
                                 </div>
                         
-                            {% endfor %}
+                            {% endfor %} 
+                            </div>                    
                             <div class="col-lg-12">
                                 <div class=" main-button">
-                                    <a href="browse.html">More Games</a>
+                                    <a href="{% url 'game_all' %}">More Games</a>
                                 </div>
                             </div>
                         </div>
@@ -267,6 +271,40 @@
 </div>
 
 
+<script type="text/javascript">
+    const slider = document.querySelector('.slider');
+
+    function activateNext() {
+        const items = document.querySelectorAll('.item-slider');
+        slider.append(items[0]);
+    }
+    
+    function activatePrev() {
+        const items = document.querySelectorAll('.item-slider');
+        slider.prepend(items[items.length-1]);
+    }
+    
+    function activateNextAutomatically() {
+        activateNext();
+    }
+    
+    // Tự động chuyển đổi sau mỗi 3 giây
+    const intervalId = setInterval(activateNextAutomatically, 3000);
+    
+    // Dừng chuyển đổi tự động khi người dùng click
+    function stopAutoSlide() {
+        clearInterval(intervalId);
+    }
+    
+    document.addEventListener('click', function(e) {
+        if (e.target.matches('.next')) {
+            activateNext();
+        } else if (e.target.matches('.prev')) {
+            activatePrev();
+        }
+    }, false);
+    
+</script>
 
 
 {% endblock content %}
